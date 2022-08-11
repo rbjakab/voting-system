@@ -1,13 +1,30 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    font-family: 'Play';
+    color: var(--primary-dark-blue);
+    width: 100%;
+    height: 100%;
+}
+
+:root {
+    --primary-green: #00a486;
+    --primary-dark-blue: #1e2a38;
+    --primary-light-blue: #e9eaeb;
+    --secondary-orange: #ff6b00;
+    --secondary-green: #29deb5;
+    --state-warning: #ffa621;
+    --state-error: #ff2e00;
+    --state-success: #2ec659;
+
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+
+    --border-radius: 12px;
 }
