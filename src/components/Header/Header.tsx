@@ -48,7 +48,7 @@ const Header = () => {
                     className={setClass(
                         styles,
                         ['nav'],
-                        [['isMenu', menuOpen && size.width < 640]]
+                        [['isMenu', menuOpen && size.width !== 0 && size.width < 640]]
                     )}
                     onClick={menuToggleHandler}
                 >

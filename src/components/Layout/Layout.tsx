@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../Header/Header';
 import classes from './Layout.module.css';
 
