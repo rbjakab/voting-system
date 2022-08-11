@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
-import { setClass } from '../../utils/util';
+import { setClass } from '../../utils/class';
 
 type Size = {
     width: number;
