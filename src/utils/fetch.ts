@@ -1,20 +1,30 @@
-import { Candidate } from './type';
+import { Candidate, GlobalResult } from './type';
 
 const xApiKey = 'POBFUICMwALegLOjApnaiLS61fu6SeJp';
 
-export const fetchData = async (
-    setCandidates: (candidates: Candidate[]) => void,
-    setLoaded: (loaded: boolean) => void
-) => {
-    const data = await fetch('https://voting.homework.snapsoft.hu/api/candidates', {
+const fetchUrl = (url: string) =>
+    fetch(url, {
         method: 'GET',
         headers: {
             'x-api-key': xApiKey,
         },
     });
 
-    const json = await data.json();
+export const fetchData = async (
+    setCandidates: (candidates: Candidate[]) => void,
+    setGlobalResults: (globalResults: GlobalResult[]) => void,
+    setLoaded: (loaded: boolean) => void
+) => {
+    const candidatesDATA = await fetchUrl('https://voting.homework.snapsoft.hu/api/candidates');
+    const candidatesJSON = await candidatesDATA.json();
+    setCandidates(candidatesJSON.candidates);
 
-    setCandidates(json.candidates);
+    const globalDATA = await fetchUrl('https://voting.homework.snapsoft.hu/api/results/global');
+    const globalJSON = await globalDATA.json();
+    setGlobalResults(globalJSON.candidate_results);
+
+    console.log(candidatesJSON.candidates);
+    console.log(globalJSON.candidate_results);
+
     setLoaded(true);
 };

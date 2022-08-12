@@ -19,6 +19,7 @@ body {
     --primary-light-blue: #e9eaeb;
     --secondary-orange: #ff6b00;
     --secondary-green: #29deb5;
+    --secondary-blue: rgb(64, 64, 200);
     --state-warning: #ffa621;
     --state-error: #ff2e00;
     --state-success: #2ec659;
