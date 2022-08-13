@@ -1,0 +1,36 @@
+.submissionForm {
+    width: 500px;
+    margin: 2rem auto;
+    border: 2px solid #ff5900;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.submissionForm label {
+    display: block;
+    padding: 1rem 0 0.5rem;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    border: 2px solid #2980b9;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.button {
+    border: 0;
+    background-color: #343050;
+    padding: 0.5rem;
+    color: white;
+    margin: 1rem 0;
+    width: fit-content;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #3498db;
+}

@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { fetchData } from '../../utils/fetch';
-import { Candidate, GlobalResult } from '../../utils/type';
+import { Candidate, GlobalResult, VotedCandidates } from '../../utils/type';
+import { votedCandidateContext, VotedCandidatesContext } from '../../context/candidate';
 
 import { Circles } from 'react-loading-icons';
 import Table from '../../components/Table/Table';
@@ -9,8 +10,8 @@ const Home = () => {
     const [loaded, setLoaded] = useState(false);
     const [candidates, setCandidates] = useState<Candidate[]>([]);
     const [globalResults, setGlobalResults] = useState<GlobalResult[]>([]);
-    const [candidateNames, setCandidateNames] = useState<string[]>([]);
-    const [candidateVotes, setCandidateVotes] = useState<number[]>([]);
+
+    const { setVotedCandidates } = useContext<VotedCandidatesContext>(votedCandidateContext);
 
     useEffect(() => {
         fetchData(setCandidates, setGlobalResults, setLoaded);
@@ -21,6 +22,8 @@ const Home = () => {
             return;
         }
 
+        const newVotedCandidates: VotedCandidates[] = [];
+
         candidates
             .filter((candidate) => candidate.in_global)
             .forEach((candidate) => {
@@ -28,15 +31,19 @@ const Home = () => {
                     (result) => result.candidate_id === candidate.id
                 )[0].total_points;
 
-                setCandidateNames((acc) => [...acc, candidate.full_name]);
-                setCandidateVotes((acc) => [...acc, totalPoint]);
+                newVotedCandidates.push({
+                    ...candidate,
+                    votes: totalPoint,
+                });
             });
-    }, [candidates, globalResults]);
+
+        setVotedCandidates(newVotedCandidates);
+    }, [candidates, globalResults, setVotedCandidates]);
 
     return (
         <>
             {!loaded && <Circles fill='#0d48a0' width={50} />}
-            {loaded && <Table names={candidateNames} votes={candidateVotes} />}
+            {loaded && <Table />}
         </>
     );
 };

@@ -54,7 +54,7 @@ const Header = () => {
                 >
                     <ul>
                         <li className={'/voting' === location.pathname ? styles.active : ''}>
-                            <Link to='/voting'>Vote here</Link>
+                            <Link to='/voting'>Vote here!</Link>
                         </li>
                         <li className={'/results' === location.pathname ? styles.active : ''}>
                             <Link to='/results'>Results</Link>
