@@ -141,7 +141,7 @@ const Voting = () => {
                     </>
                 )
             ) : (
-                <p>Your vote is submitted, thank you!</p>
+                <p style={{ textAlign: 'center' }}>Your vote is submitted, thank you!</p>
             )}
         </div>
     );

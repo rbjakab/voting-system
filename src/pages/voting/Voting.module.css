@@ -19,4 +19,5 @@
 .errorMessage {
     color: var(--state-error);
     margin: 24px;
+    text-align: center;
 }
