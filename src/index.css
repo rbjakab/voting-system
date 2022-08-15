@@ -14,7 +14,6 @@ body {
 }
 
 :root {
-    --primary-green: #00a486;
     --primary-dark-blue: #1e2a38;
     --primary-light-blue: #e9eaeb;
     --secondary-orange: #ff6b00;
@@ -22,10 +21,4 @@ body {
     --secondary-blue: #4040c8;
     --state-warning: #ffa621;
     --state-error: #ff2e00;
-    --state-success: #2ec659;
-
-    --spacing-md: 16px;
-    --spacing-lg: 32px;
-
-    --border-radius: 12px;
 }

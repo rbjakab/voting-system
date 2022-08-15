@@ -2,7 +2,7 @@
     border-spacing: 0;
     width: 60%;
     max-width: 768px;
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 thead .row {
@@ -16,7 +16,7 @@ tbody .row:hover {
 
 .row th,
 .row td {
-    padding: 12px 24px;
+    padding: 0.75rem 1.5rem;
     border-bottom: 2px solid var(--primary-dark-blue);
 }
 

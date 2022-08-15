@@ -1,4 +1,4 @@
-import { Candidate, GlobalResult, Ranking, Region, Voter } from './type';
+import { Candidate, GlobalData, IDWithRank, Region, Voter } from './type';
 
 const xApiKey = 'POBFUICMwALegLOjApnaiLS61fu6SeJp';
 
@@ -14,7 +14,7 @@ const fetchUrl = (url: string) =>
 
 export const fetchData = async (
     setCandidates: (candidates: Candidate[]) => void,
-    setGlobalResults: (globalResults: GlobalResult[]) => void,
+    setGlobalResults: (globalResults: GlobalData[]) => void,
     setLoaded: (loaded: boolean) => void
 ) => {
     const candidatesDATA = await fetchUrl('https://voting.homework.snapsoft.hu/api/candidates');
@@ -90,8 +90,8 @@ export const login = async (key: string) => {
 };
 
 export const postVote = async (
-    globalRankings: Ranking[],
-    regionRankings: Ranking[],
+    globalRankings: IDWithRank[],
+    regionRankings: IDWithRank[],
     voter_id: string,
     voter_key: string
 ) => {
@@ -112,6 +112,20 @@ export const postVote = async (
                 voter_key,
             }),
         });
+    } catch (err: any) {
+        throw new Error(err);
+    }
+};
+
+export const fetchGlobalResults = async (
+    setGlobalResults: (globalResults: GlobalData[]) => void,
+    setLoaded: (loaded: boolean) => void
+) => {
+    try {
+        const globalResultsDATA = await fetchUrl('https://voting.homework.snapsoft.hu/api/results');
+        const globalResultsJSON = await globalResultsDATA.json();
+        setGlobalResults(globalResultsJSON.candidate_results);
+        setLoaded(true);
     } catch (err: any) {
         throw new Error(err);
     }

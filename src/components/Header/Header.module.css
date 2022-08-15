@@ -55,20 +55,20 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 2rem;
 }
 
 .nav a {
     text-decoration: none;
     color: inherit;
     padding: 0.75rem 1.25rem;
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     transition: 0.3s ease all;
     white-space: nowrap;
 }
 
 .nav li {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 2rem;
 }
 
 .nav li:hover a {

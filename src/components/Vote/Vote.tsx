@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { setClass } from '../../utils/class';
-import { Candidate, Ranking } from '../../utils/type';
+import { Candidate, IDWithRank } from '../../utils/type';
 import styles from './Vote.module.css';
 
 type CheckBoxProps = {
@@ -13,8 +13,8 @@ const CheckBox = ({ rank }: CheckBoxProps) => (
 
 type Props = {
     candidates: Candidate[];
-    rankings: Ranking[];
-    setRankings: (candidates: Ranking[]) => void;
+    rankings: IDWithRank[];
+    setRankings: (candidates: IDWithRank[]) => void;
 };
 
 const Vote = ({ candidates, rankings, setRankings }: Props) => {

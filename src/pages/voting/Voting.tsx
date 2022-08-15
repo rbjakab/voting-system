@@ -4,7 +4,7 @@ import Button from '../../components/Button/Button';
 import LogIn from '../../components/LogIn/LogIn';
 import Vote from '../../components/Vote/Vote';
 import { fetchCandidates, fetchRegions, login, postVote } from '../../utils/fetch';
-import { Candidate, Ranking, Region, Voter, Error, VoterState } from '../../utils/type';
+import { Candidate, Region, Voter, Error, VoterState, IDWithRank } from '../../utils/type';
 
 import styles from './Voting.module.css';
 
@@ -19,9 +19,9 @@ const Voting = () => {
     const [regions, setRegions] = useState<Region[]>([]);
 
     const [globalCandidates, setGlobalCandidates] = useState<Candidate[]>([]);
-    const [globalRankings, setGlobalRankings] = useState<Ranking[]>([]);
+    const [globalRankings, setGlobalRankings] = useState<IDWithRank[]>([]);
     const [regionCandidates, setRegionCandidates] = useState<Candidate[]>([]);
-    const [regionRankings, setRegionRankings] = useState<Ranking[]>([]);
+    const [regionRankings, setRegionRankings] = useState<IDWithRank[]>([]);
 
     const [voter, setVoter] = useState<VoterState>();
     const [regionOfUser, setRegionOfUser] = useState<Region>();
@@ -64,6 +64,7 @@ const Voting = () => {
     const handleAuthentication = async (key: string) => {
         const loginInfo: { voter: Voter } | Error = await login(key);
 
+        // login succeeded and voter hasn't voted yet
         if (!isAuthFailed(loginInfo) && !loginInfo.voter.voted_at) {
             setLoggedIn(true);
             setErrorMessage('');
@@ -71,12 +72,14 @@ const Voting = () => {
             return;
         }
 
+        // login failed
         if (isAuthFailed(loginInfo)) {
             setFailedLoggedIn(true);
             setErrorMessage(loginInfo.error);
             return;
         }
 
+        // voter has already voted
         if (loginInfo.voter.voted_at) {
             setFailedLoggedIn(true);
             setErrorMessage('You already voted in this election!');

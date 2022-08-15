@@ -1,0 +1,32 @@
+.container {
+    border: 2px solid var(--secondary-blue);
+    border-radius: 5px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem;
+}
+
+.header {
+    background-color: var(--secondary-blue);
+    color: white;
+}
+
+.body:hover {
+    background-color: #eed9c4;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.icon:hover {
+    color: gold;
+}
+
+.nameCell {
+    width: 75%;
+}

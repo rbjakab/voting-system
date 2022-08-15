@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import { fetchData } from '../../utils/fetch';
-import { Candidate, GlobalResult, VotedCandidates } from '../../utils/type';
+import { Candidate, GlobalData, VotedCandidates } from '../../utils/type';
 import { votedCandidateContext, VotedCandidatesContext } from '../../context/candidate';
 
 import { Circles } from 'react-loading-icons';
 import Table from '../../components/Table/Table';
 
+import styles from './Home.module.css';
+
 const Home = () => {
     const [loaded, setLoaded] = useState(false);
     const [candidates, setCandidates] = useState<Candidate[]>([]);
-    const [globalResults, setGlobalResults] = useState<GlobalResult[]>([]);
+    const [globalResults, setGlobalResults] = useState<GlobalData[]>([]);
 
     const { setVotedCandidates } = useContext<VotedCandidatesContext>(votedCandidateContext);
 
@@ -41,10 +43,10 @@ const Home = () => {
     }, [candidates, globalResults, setVotedCandidates]);
 
     return (
-        <>
+        <div className={styles.container}>
             {!loaded && <Circles fill='#0d48a0' width={50} />}
             {loaded && <Table />}
-        </>
+        </div>
     );
 };
 

@@ -9,8 +9,13 @@ const Table = () => {
         <table className={styles.table}>
             <thead>
                 <tr className={styles.row}>
-                    <th>Candidate Name</th>
-                    <th>Vote Count</th>
+                    <th colSpan={2} scope='colgroup'>
+                        Global Rankings Result
+                    </th>
+                </tr>
+                <tr className={styles.row}>
+                    <th scope='col'>Candidate Name</th>
+                    <th scope='col'>Vote Count</th>
                 </tr>
             </thead>
             <tbody className={styles.tbody}>
